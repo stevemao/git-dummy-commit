@@ -1,0 +1,44 @@
+{
+  "name": "git-dummy-commit",
+  "version": "0.0.0",
+  "description": "Create a dummy commit for testing",
+  "license": "MIT",
+  "repository": "stevemao/git-dummy-commit",
+  "author": {
+    "name": "Steve Mao",
+    "email": "maochenyan@gmail.com",
+    "url": "github.com/stevemao"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "test",
+    "commit",
+    "git"
+  ],
+  "dependencies": {
+    "meow": "^3.6.0",
+    "shelljs": "^0.5.3"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "string-includes": "^1.0.0",
+    "xo": "*"
+  },
+  "xo": {
+    "ignores": [
+      "test.js"
+    ]
+  }
+}
