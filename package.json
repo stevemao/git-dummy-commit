@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "ava": "*",
-    "string-includes": "^1.0.0",
     "xo": "*"
   },
   "xo": {

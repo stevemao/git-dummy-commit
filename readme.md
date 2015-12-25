@@ -26,7 +26,7 @@ gitDummyCommit('unicorns');
 
 #### msg
 
-Type: `string` Default: `'Test commit'`
+Type: `any` or `array` of `any` Default: `'Test commit'`
 
 Commit message.
 
