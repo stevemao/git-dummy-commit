@@ -1,6 +1,6 @@
 {
   "name": "git-dummy-commit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Create a dummy commit for testing",
   "license": "MIT",
   "repository": "stevemao/git-dummy-commit",
