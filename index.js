@@ -1,20 +1,35 @@
 'use strict';
 var shell = require('shelljs');
 
+var defaultMsg = 'Test commit';
+
+function makeDefault(str) {
+	if ((typeof str === 'string' && !str.trim()) || str === undefined) {
+		return defaultMsg;
+	}
+
+	return str;
+}
+
 module.exports = function (msg, silent) {
 	var arg = '';
-	if (msg === undefined) {
-		msg = 'Test commit';
-	}
+
+	msg = makeDefault(msg);
 
 	if (silent === undefined) {
 		silent = true;
 	}
 
 	if (Array.isArray(msg)) {
-		msg.forEach(function (m) {
-			arg += '-m"' + m + '" ';
-		});
+		if (msg.length) {
+			msg.forEach(function (m) {
+				m = makeDefault(m);
+
+				arg += '-m"' + m + '" ';
+			});
+		} else {
+			arg = '-m"' + defaultMsg + '"';
+		}
 	} else {
 		arg = '-m"' + msg + '"';
 	}

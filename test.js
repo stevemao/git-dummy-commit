@@ -15,7 +15,20 @@ test('Create dummy commits', t => {
 	fn();
 	t.ok(shell.exec('git log').output.match(/\sTest commit\s/));
 
+	fn([]);
+	t.ok(shell.exec('git log').output.match(/\sTest commit[\w\W]*Test commit\s/));
+
+	fn('     ');
+	t.ok(shell.exec('git log').output.match(/\sTest commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+
+	fn('');
+	t.ok(shell.exec('git log').output.match(/\sTest commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+
 	fn(['unicorns', 'rainbows']);
 	t.ok(shell.exec('git log').output.match(/\sunicorns\s/));
 	t.ok(shell.exec('git log').output.match(/\srainbows\s/));
+
+	fn([' ', 'balloons']);
+	t.ok(shell.exec('git log').output.match(/\Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+	t.ok(shell.exec('git log').output.match(/\sballoons\s/));
 });
