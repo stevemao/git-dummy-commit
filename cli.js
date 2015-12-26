@@ -5,10 +5,10 @@ var gitDummyCommit = require('./');
 
 var cli = meow([
 	'Usage',
-	'  $ git-dummy-commit [msg]',
+	'  $ git-dummy-commit [msg] [msg] ...',
 	'',
 	'Examples',
 	'  $ git-dummy-commit \'unicorns & rainbows\''
 ]);
 
-gitDummyCommit(cli.input[0]);
+gitDummyCommit(cli.input);
