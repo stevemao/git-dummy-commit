@@ -1,6 +1,6 @@
 import test from 'ava';
-import fn from './';
 import shell from 'shelljs';
+import fn from './';
 
 shell.config.silent = true;
 shell.rm('-rf', 'tmp');
@@ -29,6 +29,6 @@ test('Create dummy commits', t => {
 	t.truthy(shell.exec('git log').stdout.match(/\srainbows\s/));
 
 	fn([' ', 'balloons']);
-	t.truthy(shell.exec('git log').stdout.match(/\Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
 	t.truthy(shell.exec('git log').stdout.match(/\sballoons\s/));
 });

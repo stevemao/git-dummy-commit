@@ -10,9 +10,6 @@
     "url": "github.com/stevemao"
   },
   "bin": "cli.js",
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
     "test": "xo && ava"
   },
@@ -34,10 +31,5 @@
   "devDependencies": {
     "ava": "*",
     "xo": "*"
-  },
-  "xo": {
-    "ignores": [
-      "test.js"
-    ]
   }
 }
