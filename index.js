@@ -34,7 +34,7 @@ module.exports = function (msg, silent) {
 		arg = '-m"' + msg + '"';
 	}
 
-	shell.exec('git commit ' + arg + ' --allow-empty', {
+	shell.exec('git commit ' + arg + ' --allow-empty --no-gpg-sign', {
 		silent: silent
 	});
 };
