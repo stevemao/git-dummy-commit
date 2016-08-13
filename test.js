@@ -10,25 +10,25 @@ shell.exec('git init');
 
 test('Create dummy commits', t => {
 	fn('awesome commit');
-	t.ok(shell.exec('git log').output.match(/\sawesome commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sawesome commit\s/));
 
 	fn();
-	t.ok(shell.exec('git log').output.match(/\sTest commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sTest commit\s/));
 
 	fn([]);
-	t.ok(shell.exec('git log').output.match(/\sTest commit[\w\W]*Test commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sTest commit[\w\W]*Test commit\s/));
 
 	fn('     ');
-	t.ok(shell.exec('git log').output.match(/\sTest commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sTest commit[\w\W]*Test commit[\w\W]*Test commit\s/));
 
 	fn('');
-	t.ok(shell.exec('git log').output.match(/\sTest commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sTest commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
 
 	fn(['unicorns', 'rainbows']);
-	t.ok(shell.exec('git log').output.match(/\sunicorns\s/));
-	t.ok(shell.exec('git log').output.match(/\srainbows\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sunicorns\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\srainbows\s/));
 
 	fn([' ', 'balloons']);
-	t.ok(shell.exec('git log').output.match(/\Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
-	t.ok(shell.exec('git log').output.match(/\sballoons\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
+	t.truthy(shell.exec('git log').stdout.match(/\sballoons\s/));
 });
