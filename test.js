@@ -31,4 +31,7 @@ test('Create dummy commits', t => {
 	fn([' ', 'balloons']);
 	t.truthy(shell.exec('git log').stdout.match(/Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit[\w\W]*Test commit\s/));
 	t.truthy(shell.exec('git log').stdout.match(/\sballoons\s/));
+
+	fn('";touch a;"');
+	t.truthy(shell.exec('git log').stdout.match(/";touch a;"/));
 });

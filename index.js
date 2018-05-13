@@ -25,13 +25,13 @@ module.exports = function (msg, silent) {
 			msg.forEach(function (m) {
 				m = makeDefault(m);
 
-				arg += '-m"' + m + '" ';
+				arg += '-m\'' + m + '\' ';
 			});
 		} else {
-			arg = '-m"' + defaultMsg + '"';
+			arg = '-m\'' + defaultMsg + '\'';
 		}
 	} else {
-		arg = '-m"' + msg + '"';
+		arg = '-m\'' + msg + '\'';
 	}
 
 	shell.exec('git commit ' + arg + ' --allow-empty --no-gpg-sign', {
