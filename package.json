@@ -7,7 +7,7 @@
   "author": {
     "name": "Steve Mao",
     "email": "maochenyan@gmail.com",
-    "url": "github.com/stevemao"
+    "url": "https://github.com/stevemao"
   },
   "bin": "cli.js",
   "scripts": {
@@ -25,8 +25,9 @@
     "git"
   ],
   "dependencies": {
+    "execa": "^1.0.0",
     "meow": "^3.6.0",
-    "shelljs": "^0.7.3"
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "ava": "*",

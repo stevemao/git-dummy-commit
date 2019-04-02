@@ -1,18 +1,14 @@
 'use strict';
-var shell = require('shelljs');
 
-var defaultMsg = 'Test commit';
+const execa = require('execa');
 
-function makeDefault(str) {
-	if ((typeof str === 'string' && !str.trim()) || str === undefined) {
-		return defaultMsg;
-	}
+const defaultMsg = 'Test commit';
 
-	return str;
-}
+const makeDefault = (str = defaultMsg) =>
+	typeof str === 'string' && !str.trim() ? defaultMsg : str;
 
-module.exports = function (msg, silent) {
-	var arg = '';
+module.exports = (msg, silent) => {
+	let args = [];
 
 	msg = makeDefault(msg);
 
@@ -21,20 +17,16 @@ module.exports = function (msg, silent) {
 	}
 
 	if (Array.isArray(msg)) {
-		if (msg.length) {
-			msg.forEach(function (m) {
-				m = makeDefault(m);
-
-				arg += '-m"' + m + '" ';
-			});
+		if (msg.length > 0) {
+			args = msg
+				.map(m => makeDefault(m))
+				.reduce((messages, m) => [...messages, '-m', m], args);
 		} else {
-			arg = '-m"' + defaultMsg + '"';
+			args = ['-m', defaultMsg];
 		}
 	} else {
-		arg = '-m"' + msg + '"';
+		args = ['-m', msg];
 	}
 
-	shell.exec('git commit ' + arg + ' --allow-empty --no-gpg-sign', {
-		silent: silent
-	});
+	execa.sync('git', ['commit', ...args, '--allow-empty', '--no-gpg-sign']);
 };
