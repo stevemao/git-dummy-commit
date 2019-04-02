@@ -7,7 +7,7 @@
   "author": {
     "name": "Steve Mao",
     "email": "maochenyan@gmail.com",
-    "url": "github.com/stevemao"
+    "url": "https://github.com/stevemao"
   },
   "bin": "cli.js",
   "scripts": {
