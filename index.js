@@ -1,5 +1,5 @@
 'use strict';
-var shell = require('shelljs');
+var execa = require('execa');
 
 var defaultMsg = 'Test commit';
 
@@ -12,7 +12,7 @@ function makeDefault(str) {
 }
 
 module.exports = function (msg, silent) {
-	var arg = '';
+	var args = [];
 
 	msg = makeDefault(msg);
 
@@ -25,16 +25,14 @@ module.exports = function (msg, silent) {
 			msg.forEach(function (m) {
 				m = makeDefault(m);
 
-				arg += '-m"' + m + '" ';
+				args = [].concat(args, ['-m', m]);
 			});
 		} else {
-			arg = '-m"' + defaultMsg + '"';
+			args = ['-m', defaultMsg];
 		}
 	} else {
-		arg = '-m"' + msg + '"';
+		args = ['-m', msg];
 	}
 
-	shell.exec('git commit ' + arg + ' --allow-empty --no-gpg-sign', {
-		silent: silent
-	});
+	execa.sync('git', ['commit', ...args, '--allow-empty', '--no-gpg-sign']);
 };

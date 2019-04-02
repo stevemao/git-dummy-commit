@@ -25,6 +25,7 @@
     "git"
   ],
   "dependencies": {
+    "execa": "^1.0.0",
     "meow": "^3.6.0",
     "shelljs": "^0.8.3"
   },
