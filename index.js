@@ -28,7 +28,5 @@ module.exports = (msg, silent) => {
 		args = ['-m', msg];
 	}
 
-	console.debug(args);
-
 	execa.sync('git', ['commit', ...args, '--allow-empty', '--no-gpg-sign']);
 };
